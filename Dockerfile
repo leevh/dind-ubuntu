@@ -38,5 +38,8 @@ VOLUME /var/lib/docker
 EXPOSE 2375
 
 ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD []
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+VOLUME /usr/share/kalabox
+CMD ["/usr/bin/supervisord"]
 
