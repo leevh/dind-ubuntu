@@ -10,7 +10,9 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables \
     xfsprogs \
     wget \
-    supervisor
+    supervisor \
+    bridge-utils \
+        cgroup-bin
     #xz
 
 ENV DOCKER_BUCKET get.docker.com
