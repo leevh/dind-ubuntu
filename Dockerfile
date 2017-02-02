@@ -4,7 +4,12 @@ RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
     curl \
-    iptables
+    btrfs-progs \
+    e2fsprogs \
+    e2fsprogs-extra \
+    iptables \
+    xfsprogs \
+    xz
 
 ENV DOCKER_BUCKET get.docker.com
 ENV DOCKER_VERSION 1.13.0
@@ -19,8 +24,12 @@ RUN set -x \
 	&& rm docker.tgz \
 	&& docker -v
 
-COPY docker-entrypoint.sh /usr/local/bin/
+#COPY docker-entrypoint.sh /usr/local/bin/
+COPY dockerd-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+VOLUME /var/lib/docker
+EXPOSE 2375
+
+ENTRYPOINT ["dockerd-entrypoint.sh"]
 CMD ["sh"]
 
