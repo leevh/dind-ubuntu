@@ -4,12 +4,12 @@ RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
     curl \
-    btrfs-progs \
+    #btrfs-progs \
     e2fsprogs \
-    e2fsprogs-extra \
+    #e2fsprogs-extra \
     iptables \
     xfsprogs \
-    xz
+    #xz
 
 ENV DOCKER_BUCKET get.docker.com
 ENV DOCKER_VERSION 1.13.0
