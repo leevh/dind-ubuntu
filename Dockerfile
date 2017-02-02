@@ -26,11 +26,11 @@ RUN set -x \
 	&& docker -v
 
 # set up subuid/subgid so that "--userns-remap=default" works out-of-the-box
-RUN set -x \
-	&& addgroup -S dockremap \
-	&& adduser -S -G dockremap dockremap \
-	&& echo 'dockremap:165536:65536' >> /etc/subuid \
-	&& echo 'dockremap:165536:65536' >> /etc/subgid
+#RUN set -x \
+#	&& addgroup -S dockremap \
+#	&& adduser -S -G dockremap dockremap \
+#	&& echo 'dockremap:165536:65536' >> /etc/subuid \
+#	&& echo 'dockremap:165536:65536' >> /etc/subgid
 
 ENV DIND_COMMIT 3b5fac462d21ca164b3778647420016315289034
 
