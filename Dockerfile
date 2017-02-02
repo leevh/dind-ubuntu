@@ -9,7 +9,8 @@ RUN apt-get update -qq && apt-get install -qqy \
     #e2fsprogs-extra \
     iptables \
     xfsprogs \
-    wget
+    wget \
+    supervisor
     #xz
 
 ENV DOCKER_BUCKET get.docker.com
