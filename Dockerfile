@@ -42,5 +42,5 @@ ENTRYPOINT ["dockerd-entrypoint.sh"]
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME /usr/share/kalabox
-CMD ["/usr/bin/supervisord"]
+CMD []
 
