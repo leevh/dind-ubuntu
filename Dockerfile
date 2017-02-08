@@ -1,13 +1,14 @@
-FROM ubuntu:16.04
+FROM phusion/baseimage:latest
 
 RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
     curl
 
+
 ENV DOCKER_BUCKET get.docker.com
 ENV DOCKER_VERSION 1.13.0
-ENV DOCKER_SHA256 05ceec7fd937e1416e5dce12b0b6e1c655907d349d52574319a1e875077ccb79
+ENV DOCKER_SHA256 fc194bb95640b1396283e5b23b5ff9d1b69a5e418b5b3d774f303a7642162ad6
 
 RUN set -x \
 	&& curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" -o docker.tgz \
@@ -18,8 +19,8 @@ RUN set -x \
 	&& rm docker.tgz \
 	&& docker -v
 
-COPY docker-entrypoint.sh /usr/local/bin/
+#COPY docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh"]
+RUN mkdir /etc/service/docker
+ADD docker.sh /etc/service/docker/run
 
