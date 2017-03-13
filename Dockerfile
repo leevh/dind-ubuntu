@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM phusion/baseimage:0.9.19
 
 RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
